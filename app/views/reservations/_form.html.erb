@@ -21,10 +21,14 @@
     <%= f.label :room_name %><br>
     <%= f.select :room_name, options_for_select(Room.all.map{|s|[s.room_name]}) %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
-  </div>
+
+    <!--<div><p><a href="Please choose a date within one week from now."></a></p></div>-->
+    <p>Please choose a date within one week from now.</p>
+    <div class="field">
+      <%= f.label :date %><br>
+      <%= f.date_select :date, :start_date => Date.today, end_date: (Date.today + 7.days).end_of_day  %>
+    </div>
+
   <div class="field">
     <%= f.label :slot %><br>
     <%= f.select :slot, options_for_select([0,2,4,6,8,10,12,14,16,18,20,22].map{|s| s}) %>
